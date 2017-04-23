@@ -1,0 +1,34 @@
+var mongoose = require('mongoose'),  
+    Schema   = mongoose.Schema,
+    ObjectId = mongoose.Schema.Types.ObjectId;
+
+var filmSchema = new Schema({  
+  title:    { type: String },
+  poster:   { type: String },
+  year:     { type: Number },
+  duration: { type: Number, min: 0 },
+  genre:    { type: String, 
+      enum: ['Drama', 'Fantasy', 'Sci-Fi', 'Thriller', 'Comedy']
+  },
+  country:  { type: String },    
+  sypnosis: { type: String },
+  rate:     { type: Number, min: 0, max: 5 },
+  comments: [{
+      username: String,
+      stars: Number,
+      text: String, 
+      date: Date 
+  }],
+});
+
+filmSchema.pre('save', function(next) {
+  var stars = 0;
+  this.comments.forEach(function (v,i,array){
+      stars = stars + v.stars
+  })
+  this.rate = Math.round(stars / this.comments.length)
+
+  next();
+});
+
+module.exports.Film = mongoose.model("Film", filmSchema);

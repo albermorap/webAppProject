@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" lang="en" content="Homepage of shows">
+    <meta name="author" content="Alberto Mora Plata">
+
+    <title id="pageTitle">Collection of films</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../client/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../client/assets/css/shop-homepage.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="../client/assets/js/jquery.js"></script>
+    <script src="../client/assets/js/jquery.cookie.js"></script> 
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../client/assets/js/bootstrap.min.js"></script>
+
+    <script src="../client/assets/js/client.js"></script> 
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Media Collection</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="javascript:getHomepage()">My Collection</a>
+                    </li>
+                    <li>
+                        <a href="#">Profile</a>
+                    </li>
+                    <li>
+                        <a href="javascript:logOut()">Log out</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <div class="modal fade" id="modalAddFilm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Add new film</h4>
+                        </div> 
+                        <div class="modal-body form-group">
+                            <form id="newFilm_form" action="/films" method="POST">
+                              <label for="message-text" class="control-label">Title:</label>
+                              <input class="form-control" type="text" name="title">
+                              <label for="message-text" class="control-label">Poster:</label>
+                              <input class="form-control" type="text" name="poster">
+                              <label for="message-text" class="control-label">Year:</label>
+                              <input class="form-control" type="number" name="year">
+                              <label for="message-text" class="control-label">Duration:</label>
+                              <input class="form-control" type="number" name="duration" min="0">
+                              <label for="message-text" class="control-label">Genre:</label>
+                              <input class="form-control" type="text" name="genre">
+                              <label for="message-text" class="control-label">Country:</label>
+                              <input class="form-control" type="text" name="country">
+                              <label for="message-text" class="control-label">Sypnosis:</label>
+                              <input class="form-control" type="text" name="sypnosis">
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            <button onClick="saveFilm()" type="button" class="btn btn-primary">Add</button>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="list-group">
+                    <a id="btn_showAll" onclick="getAllFilms()" class="list-group-item">All</a>
+                    <a id="btn_showWatched" onclick="getAllFilmsWatched()" class="list-group-item">Watched</a>
+                    <a id="btn_showPending" onclick="getAllFilmsPending()" class="list-group-item">Pending</a>
+                </div>
+                <button onClick="addFilm()" type="button" class="btn btn-primary">Add new film</button>
+                <hr>
+            </div>
+
+            <div class="col-md-9">                
+
+                <div id="filmCollection" class="row">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+    <div class="container">
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Alberto Mora Plata - Web Application Technologies 2016</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <script>            
+        loadUserData();           
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" lang="en" content="Information of a show">
+    <meta name="author" content="Alberto Mora Plata">
+
+    <title id="pageTitle">Film</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../client/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../client/assets/css/shop-item.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="../client/assets/js/jquery.js"></script>
+    <script src="../client/assets/js/jquery.cookie.js"></script> 
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../client/assets/js/bootstrap.min.js"></script>
+
+    <script src="../client/assets/js/client.js"></script> 
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Media Collection</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="javascript:getHomepage()">My Collection</a>
+                    </li>
+                    <li>
+                        <a href="#">Profile</a>
+                    </li>
+                    <li>
+                        <a href="javascript:logOut()">Log out</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <div class="modal fade" id="modalAddComment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Leave a comment</h4>
+                        </div> 
+                        <div class="modal-body form-group">
+                            <form id="newFilm_form">
+                              <label for="message-text" class="control-label">Comment:</label>
+                              <input class="form-control" type="text" name="text">
+                              <label for="message-text" class="control-label">Stars:</label>
+                              <input class="form-control" type="number" name="stars" min="0" max="5" maxlength="1">
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            <button onClick="saveComment()" type="button" class="btn btn-primary">Add</button>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+
+            <div class="col-md-4">
+
+                <img id="img_poster" class="img-responsive" src="http://miraclesworldwide.com/wp-content/uploads/2016/06/inception.jpeg" alt="">
+                <hr>
+
+            </div>
+
+            <div class="col-md-8">                
+
+                <div class="thumbnail">                    
+                    <div class="caption-full">
+                        <div class="btn-group pull-right">
+                          <button id="btn_dropdown" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            No Watched <span class="caret"/>
+                          </button>
+                          <ul id="dropdown_menu" class="dropdown-menu">
+                          </ul>
+                        </div>
+                        <h3 id="nameItem"><a href="#"></a>
+                        </h3>
+                        <h3><small id="infoItem">
+                        </small></h3>
+                        <p id="sypnosis"></p>
+                    </div>
+                    <div id="ratings_zone" class="ratings">
+                    </div>
+                </div>
+
+                <div id="comments_zone" class="well">
+                    <a onClick="leaveComment()" class="pull-right btn btn-success">Leave a Comment</a>  
+                    <h3>Comments</h3>
+
+                    <hr>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- /.container -->
+
+    <div class="container">
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Alberto Mora Plata - Web Application Technologies 2016</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container --> 
+
+    <script>            
+        loadFilmPage();           
+    </script>
+
+</body>
+
+</html>

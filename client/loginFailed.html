@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Media Collection - Login</title>
+
+    <link rel="stylesheet" href="../client/assets/css/style.css">
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../client/assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="../client/assets/js/jquery.js"></script>
+    <script src="../client/assets/js/jquery.cookie.js"></script> 
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../client/assets/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="pen-title">
+      <h1>Media Collection</h1>
+    </div>
+    <!-- Form Module-->
+    <div class="module form-module">
+      <div class="toggle"><span class="glyphicon glyphicon-plus"/></i>
+        <div class="tooltip">New user?</div>
+      </div>
+      <div class="form">
+        <h2>Login to your account</h2>
+        <form action="/login" method="POST">
+          <input type="text" placeholder="username" name="username">
+          <input type="password" placeholder="password" name="password">
+          <button>Login</button>
+        </form>        
+        <div><p></p></div>
+        <div><p style="color:red;">Username or password incorrect.</p></div>
+      </div>
+      <div class="form">
+        <h2>Create an account</h2>
+        <form action="/users" method="POST">
+          <input type="text" placeholder="username" name="username">
+          <input type="password" placeholder="password" name="password">
+          <input type="text" placeholder="name" name="name">
+          <input type="text" placeholder="surname" name="surname">
+          <input type="text" placeholder="age" name="age">
+          <input type="text" placeholder="country" name="country">
+          <button>Register</button>
+        </form>
+      </div>
+      <div class="cta"><a href="#">Forgot your password?</a></div>
+    </div>
+
+    <script src="../client/assets/js/login.js"></script>
+
+</body>
+</html>
